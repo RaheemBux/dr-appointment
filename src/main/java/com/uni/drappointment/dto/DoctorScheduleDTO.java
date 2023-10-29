@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class DoctorScheduleDTO {
+public class DoctorScheduleDTO extends AbstractDTO{
 
     private Long id;
     private String dayOfWeek;

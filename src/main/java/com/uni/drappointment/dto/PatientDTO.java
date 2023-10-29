@@ -1,6 +1,5 @@
 package com.uni.drappointment.dto;
 
-import com.uni.drappointment.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,7 +9,7 @@ import java.sql.Date;
 @Getter
 @Setter
 @ToString
-public class PatientDTO extends AbstractEntity{
+public class PatientDTO extends AbstractDTO{
 
     private Long id;
     private String name;
