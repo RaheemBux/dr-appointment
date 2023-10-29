@@ -62,6 +62,32 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             authUrlList.add("user/delete");
             authUrlList.add("user/getAll");
             authUrlList.add("user/views");
+            authUrlList.add("doctor/create");
+            authUrlList.add("doctor/update");
+            authUrlList.add("doctor/delete");
+            authUrlList.add("doctor/view");
+            authUrlList.add("doctor/getAll");
+            authUrlList.add("patient/create");
+            authUrlList.add("patient/update");
+            authUrlList.add("patient/view");
+            authUrlList.add("patient/delete");
+            authUrlList.add("patient/getAll");
+            authUrlList.add("hospital/create");
+            authUrlList.add("hospital/update");
+            authUrlList.add("hospital/delete");
+            authUrlList.add("hospital/view");
+            authUrlList.add("hospital/delete");
+            authUrlList.add("hospital/getAll");
+            authUrlList.add("doctor-schedule/create");
+            authUrlList.add("doctor-schedule/update");
+            authUrlList.add("doctor-schedule/delete");
+            authUrlList.add("doctor-schedule/view");
+            authUrlList.add("doctor-schedule/getAll");
+            authUrlList.add("appointment/create");
+            authUrlList.add("appointment/update");
+            authUrlList.add("appointment/delete");
+            authUrlList.add("appointment/view");
+            authUrlList.add("appointment/getAll");
 
 
             if (authUrlList.contains(url)) {
@@ -120,7 +146,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                                 url = urlSplitter[0];
                             }
                             ArrayList<String> utilPermissionList = new ArrayList<>();
-                            utilPermissionList.add("doctor/create");
+                            /*utilPermissionList.add("doctor/create");
                             utilPermissionList.add("doctor/update");
                             utilPermissionList.add("doctor/delete");
                             utilPermissionList.add("doctor/view");
@@ -145,7 +171,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                             utilPermissionList.add("appointment/update");
                             utilPermissionList.add("appointment/delete");
                             utilPermissionList.add("appointment/view");
-                            utilPermissionList.add("appointment/getAll");
+                            utilPermissionList.add("appointment/getAll");*/
 
                             if (utilPermissionList.contains(url)) {
                                 System.out.println("Authorize:---- " + Boolean.TRUE);
