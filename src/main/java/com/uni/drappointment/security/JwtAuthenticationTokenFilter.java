@@ -136,6 +136,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                             utilPermissionList.add("hospital/view");
                             utilPermissionList.add("hospital/delete");
                             utilPermissionList.add("hospital/getAll");
+                            utilPermissionList.add("doctor-schedule/create");
+                            utilPermissionList.add("doctor-schedule/update");
+                            utilPermissionList.add("doctor-schedule/delete");
+                            utilPermissionList.add("doctor-schedule/view");
+                            utilPermissionList.add("doctor-schedule/getAll");
 
                             if (utilPermissionList.contains(url)) {
                                 System.out.println("Authorize:---- " + Boolean.TRUE);
