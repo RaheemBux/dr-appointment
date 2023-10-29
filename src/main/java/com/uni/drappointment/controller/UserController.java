@@ -1,24 +1,15 @@
 package com.uni.drappointment.controller;
 
-import com.uni.drappointment.dto.PageDTO;
 import com.uni.drappointment.dto.StatusDTO;
 import com.uni.drappointment.dto.UserDTO;
 import com.uni.drappointment.entity.UserEntity;
-import com.uni.drappointment.searchFilters.UserFilter;
 import com.uni.drappointment.service.UserService;
-import com.uni.drappointment.util.PaginationUtil;
-import com.uni.drappointment.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.uni.drappointment.mapper.UserMapper.USER_MAPPER;
 
@@ -69,8 +60,8 @@ public class UserController {
             return new ResponseEntity<>(new StatusDTO(0, "Exception occurred! "+e), HttpStatus.OK);
         }
     }
-    @PostMapping(value = "/update", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<StatusDTO> updateUser(@ModelAttribute UserDTO userDTO, @ModelAttribute("file") MultipartFile file) {
+    @PutMapping(value = "/update")
+    public ResponseEntity<StatusDTO> updateUser(@RequestBody UserDTO userDTO) {
         try {
             boolean error = false;
             String errorMsg = "";
@@ -155,17 +146,6 @@ public class UserController {
     public List<UserDTO> getAll() {
         List<UserEntity> userEntities =userService.findAll();
         return USER_MAPPER.toDtoList(userEntities);
-    }
-
-    @PostMapping(value = "/views")
-    public PageDTO getAll(UserFilter filter, @ModelAttribute PaginationUtil paginationUtil) {
-        Map<String, String> params=new HashMap<>();
-        params.put("page",paginationUtil.getCurrentPage().toString());
-        params.put("itemsPerPage",paginationUtil.getItemsPerPages().toString());
-        params.put("sortBy",paginationUtil.getSortBy());
-        params.put("direction",paginationUtil.getDirection());
-        Page<UserEntity> page = userService.findAllByFilterWithPaging(filter, Utility.createPageRequest(params));
-        return new PageDTO(USER_MAPPER.toDtoList(page.getContent()), page.getTotalElements(), page.getTotalPages());
     }
 
 }
