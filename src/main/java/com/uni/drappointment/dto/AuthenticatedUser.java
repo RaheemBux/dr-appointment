@@ -1,5 +1,6 @@
 package com.uni.drappointment.dto;
 
+import com.uni.drappointment.util.AccessType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,8 +19,7 @@ public class AuthenticatedUser {
     private String firstName;
     private String lastName;
     private String message;
-    private String loginDate;
-    private Boolean isBlocked;
+    private AccessType accessType;
 
     public AuthenticatedUser(Integer status , String message){
         this.status = status;

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 import static com.uni.drappointment.mapper.UserMapper.USER_MAPPER;
@@ -22,7 +23,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(value = "/create")
-    public ResponseEntity<StatusDTO> createUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<StatusDTO> createUser(@Valid @RequestBody UserDTO userDTO) {
         try {
             boolean error = false;
             String errorMsg = "";
@@ -125,7 +126,7 @@ public class UserController {
         }
 
     }
-    @GetMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<StatusDTO> deleteUser(@PathVariable Long id) {
         try {
             UserEntity user = userService.findById(id);

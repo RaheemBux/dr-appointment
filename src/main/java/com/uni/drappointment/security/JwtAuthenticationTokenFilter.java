@@ -59,7 +59,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             authUrlList.add("user/update");
             authUrlList.add("user/delete");
             authUrlList.add("user/view");
-            authUrlList.add("user/delete");
             authUrlList.add("user/getAll");
             authUrlList.add("user/views");
             authUrlList.add("doctor/create");

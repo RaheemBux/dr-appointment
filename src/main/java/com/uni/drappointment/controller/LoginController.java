@@ -61,7 +61,6 @@ public class LoginController {
                 logger.info("Inside Auth Service :: 2");
                 authenticatedUser = getAuthenticatedUserForUnblockedUser(user, jwtTokenUtil);
                 user.setLoginDate(CommonUtil.getCurrentTimestamp());
-                user.setIsLogged(true);
                 userService.update(user);
                 return new ResponseEntity<>(authenticatedUser, HttpStatus.OK);
             }else{
@@ -91,8 +90,8 @@ public class LoginController {
         if (user.getEmail() != null) {
             authenticatedUser.setEmail(user.getEmail());
         }
-        if (user.getLoginDate() != null) {
-            authenticatedUser.setLoginDate(user.getLoginDate().toString());
+        if (user.getAccessType() != null) {
+            authenticatedUser.setAccessType(user.getAccessType());
         }
         final String token = jwtTokenUtil.generateToken(user.getUserName());
         authenticatedUser.setMessage("Success");

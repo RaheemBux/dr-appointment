@@ -1,9 +1,12 @@
 package com.uni.drappointment.dto;
 
+import com.uni.drappointment.util.AccessType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Setter
@@ -18,4 +21,6 @@ public class UserDTO extends AbstractDTO {
     private String lastName;
     private String mobileNo;
     private String email;
+    @NotNull(message = "accessType can not be null")
+    private AccessType accessType;
 }

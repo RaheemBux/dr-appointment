@@ -1,5 +1,6 @@
 package com.uni.drappointment.entity;
 
+import com.uni.drappointment.util.AccessType;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
@@ -40,10 +41,8 @@ public class UserEntity extends AbstractEntity{
     @Column(name = "email")
     private String email;
 
-    @Column(name = "is_blocked", columnDefinition = "SMALLINT default 0")
-    private Boolean isBlocked;
-
-    @Column(name = "is_logged_in", columnDefinition = "SMALLINT default 0")
-    private Boolean isLogged;
+    @Column(name = "access_type")
+    @Enumerated(EnumType.STRING)
+    private AccessType accessType;
 
 }

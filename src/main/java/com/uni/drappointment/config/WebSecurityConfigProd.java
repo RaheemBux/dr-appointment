@@ -97,11 +97,17 @@ public class WebSecurityConfigProd extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth").permitAll()
                 .antMatchers("/logout").permitAll()
                 .antMatchers("/user/*").permitAll()
+                .antMatchers("/user/*/*").permitAll()
                 .antMatchers("/hospital/*").permitAll()
+                .antMatchers("/hospital/*/*").permitAll()
                 .antMatchers("/doctor/*").permitAll()
+                .antMatchers("/doctor/*/*").permitAll()
                 .antMatchers("/patient/*").permitAll()
+                .antMatchers("/patient/*/*").permitAll()
                 .antMatchers("/doctor-schedule/*").permitAll()
+                .antMatchers("/doctor-schedule/*/*").permitAll()
                 .antMatchers("/appointment/*").permitAll()
+                .antMatchers("/appointment/*/*").permitAll()
                 .anyRequest().authenticated();
 
         http
