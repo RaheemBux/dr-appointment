@@ -34,13 +34,13 @@ public class HospitalController {
         }
     }
     @PutMapping(value = "/update")
-    public ResponseEntity<StatusDTO> update(@RequestBody HospitalDTO HospitalDTO) {
+    public ResponseEntity<StatusDTO> update(@RequestBody HospitalDTO hospitalDTO) {
         try {
-            HospitalEntity hospitalEntity = hospitalService.findById(HospitalDTO.getId());
+            HospitalEntity hospitalEntity = hospitalService.findById(hospitalDTO.getId());
             if (hospitalEntity == null) {
                 return new ResponseEntity<>(new StatusDTO(0, "Hospital not found!"), HttpStatus.NOT_FOUND);
             }
-            hospitalEntity = HOSPITAL_MAPPER.toEntity(HospitalDTO);
+            hospitalEntity = HOSPITAL_MAPPER.toEntity(hospitalDTO);
             hospitalEntity.setStatus(true);
             hospitalService.update(hospitalEntity);
             return new ResponseEntity<>(new StatusDTO(1, "Hospital Updated Successfully ", HOSPITAL_MAPPER.toDto(hospitalEntity)), HttpStatus.OK);
@@ -72,11 +72,11 @@ public class HospitalController {
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<StatusDTO> delete(@PathVariable Long id) {
         try {
-            HospitalEntity HospitalEntity = hospitalService.findById(id);
-            if (HospitalEntity == null) {
+            HospitalEntity hospitalEntity = hospitalService.findById(id);
+            if (hospitalEntity == null) {
                 return new ResponseEntity<>(new StatusDTO(1, "Hospital not found!"), HttpStatus.NOT_FOUND);
             } else {
-                hospitalService.delete(HospitalEntity);
+                hospitalService.delete(hospitalEntity);
             }
         } catch (Exception e) {
             return new ResponseEntity<>(new StatusDTO(0, "Exception occurred!\n" + e.getMessage()), HttpStatus.OK);

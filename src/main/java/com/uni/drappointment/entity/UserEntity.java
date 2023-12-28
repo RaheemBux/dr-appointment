@@ -45,4 +45,7 @@ public class UserEntity extends AbstractEntity{
     @Enumerated(EnumType.STRING)
     private AccessType accessType;
 
+    @Column(name = "user_type_id")
+    private Integer userTypeId;
+
 }

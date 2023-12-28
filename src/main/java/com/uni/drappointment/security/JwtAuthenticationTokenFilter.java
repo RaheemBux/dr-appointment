@@ -87,6 +87,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             authUrlList.add("appointment/delete");
             authUrlList.add("appointment/view");
             authUrlList.add("appointment/getAll");
+            authUrlList.add("appointment/getAppointmentsByUserType");
 
 
             if (authUrlList.contains(url)) {

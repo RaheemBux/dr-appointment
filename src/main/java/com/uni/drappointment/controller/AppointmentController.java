@@ -4,6 +4,7 @@ import com.uni.drappointment.dto.AppointmentDTO;
 import com.uni.drappointment.dto.StatusDTO;
 import com.uni.drappointment.entity.AppointmentEntity;
 import com.uni.drappointment.service.AppointmentService;
+import com.uni.drappointment.util.AccessType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -88,6 +89,11 @@ public class AppointmentController {
     @GetMapping(value = "/getAll")
     public List<AppointmentDTO> getAll() {
         return APPOINTMENT_MAPPER.toDtoList(appointmentService.findAll());
+    }
+
+    @GetMapping(value = "/getAppointmentsByUserType")
+    public List<AppointmentDTO> getAppointmentsByUserType(@RequestParam Long userTypeId, @RequestParam AccessType accessType) {
+        return APPOINTMENT_MAPPER.toDtoList(appointmentService.getAppointmentsByUserType(userTypeId,accessType));
     }
 
 }
