@@ -13,7 +13,7 @@ public interface UserMapper {
 
     UserMapper USER_MAPPER = Mappers.getMapper(UserMapper.class);
 
-    @Mapping(target = "password", expression = "java(com.uni.drappointment.util.EncoderDecoder.getEncryptedSHA1Password(userDTO.getPassword().trim()))")
+    @Mapping(target = "password", expression = "java(com.uni.drappointment.util.EncoderDecoder.getEncryptedSHA1Password(userDTO.getPassword()))")
     UserEntity toEntity(UserDTO userDTO);
     UserDTO toDto(UserEntity userEntity);
     List<UserDTO> toDtoList(List<UserEntity> userEntities);
